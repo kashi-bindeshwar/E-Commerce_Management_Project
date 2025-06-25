@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bindeshwar Mart</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" th:href="@{/bower_components/Ionicons/css/ionicons.min.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js}"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js}"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        
+      <!-- My style css -->  
+     <link th:href="@{/assets/css/myStyle.css}" rel="stylesheet">      
+        
+        
+  	<script type="text/javascript">
+ 	//image show
+	function displayImage() {
+		  // Get the input and image elements
+		  var fileInput = document.getElementById("file_name");
+		  var image = document.getElementById("photo");
+
+		  // Check if a file was selected
+		  if (fileInput.files && fileInput.files[0]) {
+		    // Create a new FileReader object
+		    var reader = new FileReader();
+
+		    // When the FileReader has loaded the file, set the src attribute of the image tag to the result
+		    reader.onload = function(event) {
+		      image.src = event.target.result;
+		    }
+
+		    // Read the selected file as a data URL
+		    reader.readAsDataURL(fileInput.files[0]);
+		  }
+		}
+	</script>      
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue  sidebar-mini">
+<div class="wrapper">
+	
+	 		<!--Header -->
+	<div th:insert="fragment/common :: header" ></div>
+ 	<!-- =======End Header  ======= -->
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+    
+      <!-- Sidebar user panel (optional) -->
+	<div th:insert="fragment/common :: sidebarUser" ></div>
+ 	<!-- =======End Sidebar user panel ======= -->
+      
+     <!-- ======= Sidebar ======= -->
+	<div th:insert="fragment/asidebarController :: asidebarOrganization" ></div>
+ 	<!-- =======End Sidebar ======= -->
+      
+   </section> 
+    <!-- /.sidebar -->
+ </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Master Setup
+        <small>Organisation</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a th:href="@{../Dashboard/showDashboard}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Organisation</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+      	  <div class="col-md-12">
+          <div class="box box-primary">
+            <div class="box-body pad table-responsive">				
+      		<div class="box-header">
+              <h3 class="box-title">Add Organisation</h3>
+            </div>	
+      				 <!-- Back button-->
+      				 <div id="backbtn">
+      				 <a > <button type="button" onclick="javascript: window.history.go(-1);" class="btn btn-block btn-primary"><i class="fa fa-arrow-left"></i>back</button></a>
+      				 </div>
+          	          
+          	        
+          			<form  th:action="@{addOrg}" th:object="${organisation}" method="post" enctype="multipart/form-data">
+          			<input type="hidden"  th:field="*{id}" />
+	  					  <!-- Company Details-->
+ 	 				<section>
+ 	 				 <div class="box box-primary">
+            		<div class="box-body pad table-responsive">	
+ 						<nav > 
+ 						<div class="main2" >
+ 		   					<div class="form-left">
+           					<label >Organisation Name</label>
+           	    			<input type="text" name="company_name" id="company_name" th:field="*{organisationName}" required/>
+           	    			<label >Office No</label>
+           	    			<input type="text" name="office_no" id="office_no" th:field="*{officeNo}" required/>
+           	    			<label >Address</label>
+           	    			<input type="text" name="Address2" id="Address2" th:field="*{address}" />
+           	    			<label >pincode</label>
+           	    			<input type="text" name="pincode" id="pincode" th:field="*{pincode}" required/>
+ 				        	 </div>
+ 		
+ 		             		<div class="form-left">
+           		    		<label >Contact No </label>
+           		   		 	<input type="text" name="Contact_no" id="Contact_no" th:field="*{contactNo}" required/>
+           		   		 	<label >Email</label>
+           		   		 	<input type="email" name="email" id="email" th:field="*{email}" required/>
+           		   		 	<label >City</label>
+           		   		 	<input type="text" name="City" id="City" th:field="*{city}" required/>
+           		   		 	<label >State</label>
+           		   		 	<input type="text" name="State" id="State" th:field="*{state}" required/>
+ 		          			</div>
+ 		       			 </div>
+	             	</nav>
+	             	
+	             	<div class="imeg-detail">
+           			<div class="image-info">
+           				<img alt="photo" th:src="@{/assets/img/avatar.jpeg}" id="photo">
+           				<label >logo</label>
+           			</div>
+           			<div class="imeg-detail-text">
+           				<p>please select an image</p>
+           				<p>.image size less than 800kb</p>
+           				<p>.image formats are .jpg/ .jpeg / ./png</p>
+           				<p>.height and width must not exceed 1200px</p>
+           				<input type="file"  accept="image/gif, image/jpeg, image/png" name="file_name" id="file_name" th:field="*{tempimage}" onchange="displayImage()">
+           			</div>
+           		</div>
+           		     </div>
+          </div>
+     
+	 		 	 </section>
+ 	 					
+ 	 					 <!-- Submit button-->
+      				 <div id="submitbtn">
+      				<input id="btn" type="submit" value="Submit"  class="btn btn-block btn-primary"/> 
+      				 </div>	
+          			
+         	 </form>
+		
+            </div>
+            <!-- /.box -->
+          </div>
+        </div>	
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  	<!-- Main Footer -->
+	<div th:insert="fragment/common :: footer" ></div>
+ 	<!-- =======End Main Footer ======= -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+</body>
+</html>

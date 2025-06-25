@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bindeshwar Mart</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" th:href="@{/bower_components/Ionicons/css/ionicons.min.css}">
+    <!-- DataTables -->
+  <link rel="stylesheet" href="@{/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css}">
+  <!-- Theme style -->
+  <link rel="stylesheet" th:href="@{/dist/css/AdminLTE.min.css}">
+  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+  <link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js}"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js}"></script>
+  <![endif]-->
+
+
+
+      <!-- My style css -->  
+     <link th:href="@{/assets/css/myStyle.css}" rel="stylesheet">  
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition skin-blue  sidebar-mini">
+<div class="wrapper">
+	
+	 		<!--Header -->
+	<div th:insert="fragment/common :: header" ></div>
+ 	<!-- =======End Header  ======= -->
+ 
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+    
+      <!-- Sidebar user panel (optional) -->
+	<div th:insert="fragment/common :: sidebarUser" ></div>
+ 	<!-- =======End Sidebar user panel ======= -->
+      
+     <!-- ======= Sidebar ======= -->
+	<div th:insert="fragment/asidebarController :: asidebarPurchaseManage" ></div>
+ 	<!-- =======End Sidebar ======= -->
+      
+   </section> 
+    <!-- /.sidebar -->
+ </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Purchases
+        <small>Manage Purchase</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a th:href="@{../Dashboard/showDashboard}"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Purchases</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+	       <div class="col-md-14">
+          <div class="box box-primary">
+            <div class="box-body">
+             <div class="box-header">
+              <h3 class="box-title">Purchase details</h3>
+            </div>	
+           				<!-- Back button-->
+      				 <div id="backbtn">
+      				 <a > <button type="button" onclick="javascript: window.history.go(-1);" class="btn btn-block btn-primary"><i class="fa fa-arrow-left"></i>back</button></a>
+      				 </div>
+            
+	   <!-- Bordered Table -->
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Sr.No.</th>
+                    <th scope="col">Vendor</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Payement Mode</th>
+                    <th scope="col">Manage</th>
+                  </tr>
+                </thead>
+               <tbody>
+                  <tr th:each="prod : ${purchases}">
+                    <td th:text="${prod.id}"></td>
+                    <td th:text="${prod.vendor.FirstName +' '+prod.vendor.LastName}"></td>
+                    <td th:text="${prod.totalAmount}"></td>
+                     <td th:text="${prod.payementMode.pmode}"></td>
+                    <td class="manage">
+                     <a th:href="@{../Purchase/viewPurchase(id=${prod.id})}" title="view" ><i class="fa fa-fw fa-eye"></i></a> |     
+                    <a th:href="@{../Purchase/UpdatePurchase(id=${prod.id})}" title="update" ><i class="fa fa-edit"></i>Update</a>  |
+                    <a th:href="@{../Purchase/deletePurchase(id=${prod.id})}" title="delete" ><i class="fa fa-trash"></i>delete</a>  |
+                    <a th:href="@{../PurchaseProduct/showorPurchaseProduct(id=${prod.id})}" title="Add Stock" ><i class="fa fa-fw fa-truck"></i>add stock</a>
+                    </td>
+                    
+                  </tr>
+                   </tbody>
+               <tfoot>
+              <tr>
+                   	<th scope="col">Sr.No.</th>
+                    <th scope="col">Vendor</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Payement Mode</th>
+                    <th scope="col">Manage</th>
+                  </tr>
+                </tfoot>
+              </table>
+              <!-- End Bordered Table -->
+            </div>
+            <!-- /.box -->
+          </div>
+        </div>	
+
+
+    </section>
+   
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  	<!-- Main Footer -->
+	<div th:insert="fragment/common :: footer" ></div>
+ 	<!-- =======End Main Footer ======= -->
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 3 -->
+<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<!-- DataTables -->
+<script th:src="@{/bower_components/datatables.net/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js}"></script>
+<!-- SlimScroll -->
+<script th:src="@{/bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+<!-- FastClick -->
+<script th:src="@{/bower_components/fastclick/lib/fastclick.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. -->
+     
+ <!-- page script -->
+<script>
+  $(function () {
+    $('#example1').DataTable()
+	$('#example2').DataTable()
+	$('#example3').DataTable()
+  })    
+  </script>  
+  
+</body>
+</html>

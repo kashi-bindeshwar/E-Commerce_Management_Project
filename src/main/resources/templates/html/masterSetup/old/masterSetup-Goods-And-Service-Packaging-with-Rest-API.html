@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Icons / Bootstrap - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+<script >
+$.get("restusers/uusers", function(data) {
+    // Update the HTML with the list of users
+    $("#users").html(data);
+});
+</script>
+<body>
+<div id="users" th:fragment="users">
+    <!-- Render the list of users here -->
+</div>
+
+	
+        
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+}
+
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+}
+
+input[type="text"] {
+    width: 200px;
+}
+
+</style>
+
+<script >
+
+document.getElementById('enrollForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    // Get input values
+    var studentId = document.getElementById('studentId').value;
+    var coursesSelect = document.getElementById('courses');
+    var selectedCourses = Array.from(coursesSelect.selectedOptions).map(option => option.value);
+    
+    // Create the request body
+    var requestBody = {
+        studentId: studentId,
+        courses: selectedCourses
+    };
+    
+    // Make a POST request to enroll the student in the courses
+    fetch('/students/' + studentId + '/enroll', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    })
+    .then(function(response) {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Error enrolling student');
+        }
+    })
+    .then(function(data) {
+        // Handle successful enrollment response
+        alert('Student enrolled successfully');
+        // Optionally, you can perform additional actions, such as updating the UI
+    })
+    .catch(function(error) {
+        // Handle errors
+        alert(error.message);
+    });
+});
+
+</script>
+
+
+</head>
+<body>
+ <h1>Enroll Student</h1>
+    
+    <form id="enrollForm">
+        <div>
+            <label for="studentId">Student ID:</label>
+            <input type="text" id="studentId" name="studentId">
+        </div>
+        <div>
+            <label for="courses">Courses:</label>
+            <select id="courses" name="courses" multiple>
+                <option value="1">Course 1</option>
+                <option value="2">Course 2</option>
+                <option value="3">Course 3</option>
+                <!-- Add more options here as needed -->
+            </select>
+        </div>
+        <div>
+            <button type="submit">Enroll</button>
+        </div>
+    </form>
+
+</body>
+</html>

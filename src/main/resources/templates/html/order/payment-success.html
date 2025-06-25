@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/dollar.png" type="image/png" sizes="16x16">
+    <title>Payment Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+      body {
+            background: url('https://www.toptal.com/designers/subtlepatterns/uploads/circles-light.png');
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            text-align: center;
+            animation: zoomEffect 0.5s ease-in-out forwards;
+            transform: scale(0.5);
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: #32a852;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            font-size: 24px;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .success-description {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0 20px;
+        }
+
+        .order-details {
+            background: #f1f8e9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .order-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        .complement {
+            margin-top: 10px;
+            color: #388e3c;
+            font-weight: bold;
+        }
+
+        .exit-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #32a852;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .exit-button:hover {
+            transform: scale(1.1);
+            background-color: #2e7d32;
+        }
+
+        @keyframes zoomEffect {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a th:href="@{/ecom/profile}" class="exit-button">Exit</a>
+
+    <div class="container">
+        <div class="success-icon">&#10004;</div>
+        <div class="success-title">Payment Complete</div>
+        <div class="success-description">
+            Thank you for completing the payment! You will shortly receive an email confirmation.
+        </div>
+        <div class="order-details">
+            <div class="order-number-label">Payment ID</div>
+            <div class="order-number"> <h5 th:text="${paymentId}"></h5></div>
+        </div>
+        <div class="order-details">
+            <div class="order-number-label">Order ID</div>
+            <div class="order-number"> <h5 th:text="${orderId}"></h5></div>
+            <div class="complement">Thank You!</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
