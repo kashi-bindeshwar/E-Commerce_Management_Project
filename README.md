@@ -150,7 +150,7 @@ I focused on writing clean, modular, and maintainable code to simulate an indust
 
 ---
 
-### ✨ From Bindeshwar, with code and devotion. 🔱
+> ### ✨ _**From Bindeshwar, with code and devotion.**_ 🔱
 
 ---
 
