@@ -20,6 +20,8 @@ It is designed for managing an e-commerce platform with admin and user functiona
 ---
 
 ##  Project Screenshots
+###  User Panel
+   #### Home Page (Header Section And Hero Section)
 ![Screenshot 2025-06-25 202659](https://github.com/user-attachments/assets/4a4d1160-7d70-4345-8945-5b4335d982a0)
 
 
