@@ -131,9 +131,18 @@ bindeshwarmart/
 
 
 
-Developed by **Kashi Bindeshwar**  
-With the blessings of **Lord Shiva (Mahadev)** 🕉️
+---
+
+### Developed By
+
+**Himanshu Upadhyay**  
+_with training teammates during training._
 
 ---
 
-> 📌 _Feel free to fork, clone, or contribute to this project!_
+### 🙏 With the blessings of
+🕉️**Bindeshwar Mahadev**🔱
+
+---
+
+>  _Feel free to fork, clone, or contribute to this project!_
