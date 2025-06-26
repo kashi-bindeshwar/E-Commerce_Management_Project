@@ -46,7 +46,7 @@ It is designed for managing an e-commerce platform with admin and user functiona
 ![Screenshot 2025-06-25 205036](https://github.com/user-attachments/assets/f59ee477-9175-4cb1-8603-09710fb15768)
 
 ####  Product Cart Page
-![Screenshot 2025-06-25 205057](https://github.com/user-attachments/assets/79f37cdd-1d05-4cf8-8627-38e7778498b3)
+![Screenshot 2025-06-25 205057](https://github.com/user-attachments/assets/65cb4271-4afa-4b97-a29a-3419aaf37fd4)
 
 ####  Product Billing Page
 ![Screenshot 2025-06-25 205136](https://github.com/user-attachments/assets/dd75e9e9-bf33-4296-b370-d8cdd3062220)
