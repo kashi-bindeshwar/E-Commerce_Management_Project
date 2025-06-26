@@ -126,23 +126,32 @@ bindeshwarmart/
 ├── pom.xml                          # Maven configuration
 └── README.md
 ```
+---
+
+##  Contribution & Learning
+
+This project was initially provided by the training company as a foundational learning base.  
+However, I have extensively **modified, customized, and enhanced** the application as part of my **Full-Stack Java Developer** training journey.
+
+I worked hands-on across various modules such as:
+
+-  Frontend integration using **HTML, CSS**, and **Thymeleaf**
+-  Backend development using **Spring Boot** and **Spring Data JPA**
+-  Database connectivity with **MySQL** using both **custom** and **native queries**
+-  User interface improvements and **form validation logic**
+-  Complete **CRUD operations** for multiple entities
+-  Implementation of **image upload**, **session handling**, and **business logic layers**
+
+This project helped me gain **end-to-end practical experience** in real-world application development — from UI to backend to database.
+
+I focused on writing clean, modular, and maintainable code to simulate an industry-grade project.
+
+> ⚠️ **Note:** The current version of the project is the result of my own learning, modifications, and hands-on development efforts.
 
 ---
 
-
-
----
-
-### Developed By
-
-**Himanshu Upadhyay**  
-_with training teammates during training._
+### ✨ From Bindeshwar, with code and devotion. 🔱
 
 ---
 
-### 🙏 With the blessings of
-🕉️**Bindeshwar Mahadev**🔱
-
----
-
->  _Feel free to fork, clone, or contribute to this project!_
+> _Feel free to fork, clone, or contribute to this project!_
